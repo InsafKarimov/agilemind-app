@@ -1,60 +1,53 @@
 import React, { useState } from 'react';
-import { QUIZ_QUESTIONS } from '../utils/constants';
+
+const QUIZ_QUESTIONS = [
+  { text: 'Что такое WIP-лимит?', options: ['Максимум задач в работе', 'Время спринта', 'Количество сотрудников'], correct: 0 },
+  { text: 'Как контекстные подсказки помогают бороться с «Agile-театром»?', options: ['Увеличивают число встреч', 'Объясняют последствия действий', 'Отключают стендапы'], correct: 1 },
+  { text: 'Что из перечисленного является признаком «Agile-театра»?', options: ['Обсуждение реальных проблем', 'Формальные ретроспективы без изменений', 'Гибкое планирование'], correct: 1 },
+  { text: 'Почему гибридный подход Scrumban эффективнее?', options: ['Убирает все встречи', 'Сочетает спринты с WIP', 'Увеличивает документацию'], correct: 1 }
+];
 
 export default function QuizModal({ onClose, onSuccess }) {
   const [answers, setAnswers] = useState({});
-  const [submitted, setSubmitted] = useState(false);
-  const [score, setScore] = useState(0);
 
   const submitQuiz = () => {
     let correct = 0;
     QUIZ_QUESTIONS.forEach((q, i) => {
       if (parseInt(answers[i]) === q.correct) correct++;
     });
-    setScore(correct);
-    setSubmitted(true);
-    if (correct >= 3 && onSuccess) onSuccess();
+    const passed = correct >= 3;
+    if (passed) {
+      alert(`✅ Поздравляем! Квиз пройден (${correct}/4)\nПолучен значок "Знаток Agile"!`);
+      if (onSuccess) onSuccess();
+    } else {
+      alert(`❌ Квиз не пройден (${correct}/4). Попробуйте ещё раз.`);
+    }
+    onClose();
   };
 
-  if (submitted) {
-    const passed = score >= 3;
-    return (
-      <div className="modal-overlay">
-        <div className="modal-content">
-          <div className="empty-emoji">{passed ? '🏅' : '📚'}</div>
-          <h2 className="modal-title">{passed ? 'Поздравляем!' : 'Попробуйте ещё раз'}</h2>
-          <p className="empty-text">Правильных ответов: {score} из {QUIZ_QUESTIONS.length}</p>
-          {passed && <p className="quiz-badge-text">Вы получили значок "Знаток Agile"! 🎉</p>}
-          <button className="btn-primary" onClick={onClose}>Закрыть</button>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="modal-overlay">
-      <div className="modal-content" style={{ width: '450px', maxWidth: '90vw' }}>
-        <h2 className="modal-title">📝 Квиз: Знаток Agile</h2>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" style={{ maxWidth: '500px', width: '90%' }} onClick={(e) => e.stopPropagation()}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+          <h2 className="modal-title">📝 Квиз: Знаток Agile</h2>
+          <button onClick={onClose} className="learning-close-btn">✕</button>
+        </div>
+        
         {QUIZ_QUESTIONS.map((q, idx) => (
           <div key={idx} style={{ marginBottom: '20px' }}>
             <p style={{ fontWeight: 'bold', marginBottom: '8px' }}>{idx+1}. {q.text}</p>
             {q.options.map((opt, oidx) => (
               <label key={oidx} style={{ display: 'block', marginLeft: '12px', marginBottom: '4px' }}>
-                <input
-                  type="radio"
-                  name={`q${idx}`}
-                  value={oidx}
-                  onChange={(e) => setAnswers({...answers, [idx]: parseInt(e.target.value)})}
-                  style={{ marginRight: '8px' }}
-                />
+                <input type="radio" name={`q${idx}`} value={oidx} onChange={(e) => setAnswers({...answers, [idx]: parseInt(e.target.value)})} style={{ marginRight: '8px' }} />
                 {opt}
               </label>
             ))}
           </div>
         ))}
-        <div className="modal-buttons">
-          <button className="btn-primary" onClick={submitQuiz}>Проверить</button>
-          <button className="btn-secondary" onClick={onClose}>Закрыть</button>
+        
+        <div style={{ display: 'flex', gap: '12px', marginTop: '20px' }}>
+          <button onClick={submitQuiz} className="btn-primary" style={{ flex: 1 }}>Проверить</button>
+          <button onClick={onClose} className="btn-secondary" style={{ flex: 1 }}>Закрыть</button>
         </div>
       </div>
     </div>

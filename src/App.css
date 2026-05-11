@@ -611,3 +611,1211 @@ body {
 .wip-warning {
   outline: 2px solid #ef4444;
 }
+/* ========== ПРОФИЛЬ ========== */
+.profile-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.profile-stat-card {
+  text-align: center;
+  background: #f3f4f6;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.profile-stat-number {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.profile-stat-label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.profile-progress-section {
+  margin-bottom: 24px;
+}
+
+.profile-progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.profile-progress-label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.profile-progress-percent {
+  font-size: 14px;
+  color: #4f46e5;
+}
+
+.profile-progress-bar {
+  background: #e5e7eb;
+  border-radius: 10px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.profile-progress-fill {
+  background: #4f46e5;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.profile-achievements {
+  margin-bottom: 16px;
+}
+
+.profile-achievements-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.profile-achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.profile-achievement-unlocked {
+  background: #ecfdf5;
+  opacity: 1;
+}
+
+.profile-achievement-locked {
+  background: #f3f4f6;
+  opacity: 0.6;
+}
+
+.profile-achievement-icon {
+  font-size: 28px;
+}
+
+.profile-achievement-info {
+  flex: 1;
+}
+
+.profile-achievement-name {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.profile-achievement-desc {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.profile-achievement-check {
+  font-size: 20px;
+  color: #10b981;
+}
+
+.profile-close-btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-user-info {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.profile-avatar {
+  font-size: 48px;
+}
+
+.profile-user-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.profile-user-date {
+  color: #6b7280;
+  font-size: 14px;
+}
+.btn-profile {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+.btn-profile:hover {
+  background: #4338ca;
+}
+/* ========== КАСТОМНЫЙ СКРОЛЛБАР ========== */
+
+/* Для всей страницы */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Для модальных окон */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+.modal-content {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+/* ========== ОБУЧАЛКА ========== */
+.learning-modal {
+  max-width: 700px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.learning-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.learning-close-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.learning-close-btn:hover {
+  background: #dc2626;
+}
+
+.learning-progress {
+  margin-bottom: 24px;
+}
+
+.learning-progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.progress-bar {
+  background: #e5e7eb;
+  border-radius: 10px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: #4f46e5;
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.learning-module {
+  margin-bottom: 24px;
+  padding: 16px;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+}
+
+.module-default {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.module-completed {
+  background: #ecfdf5;
+  border: 1px solid #10b981;
+}
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.module-header h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.module-btn {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.btn-mark {
+  background: #4f46e5;
+  color: white;
+}
+
+.btn-mark:hover {
+  background: #4338ca;
+}
+
+.btn-completed {
+  background: #10b981;
+  color: white;
+}
+
+.module-content {
+  font-size: 14px;
+  color: #4b5563;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.video-container {
+  background: #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-frame {
+  width: 100%;
+  height: 200px;
+  border: none;
+}
+
+.certificate-box {
+  text-align: center;
+  padding: 16px;
+  background: #fef3c7;
+  border-radius: 16px;
+  margin-top: 16px;
+}
+
+.certificate-box div {
+  font-size: 32px;
+}
+
+.certificate-box h3 {
+  font-weight: bold;
+  color: #92400e;
+  margin: 8px 0;
+}
+
+.certificate-box p {
+  font-size: 14px;
+  color: #92400e;
+}
+
+.learning-close-bottom {
+  width: 100%;
+  margin-top: 20px;
+}
+.video-container {
+  margin-top: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f3f4f6;
+}
+
+.video-frame {
+  width: 100%;
+  height: 200px;
+  border: none;
+}
+
+.video-note {
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #6b7280;
+  text-align: center;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+}
+.video-placeholder {
+  background: #f3f4f6;
+  padding: 30px 20px;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.video-placeholder-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.resource-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+}
+
+.resource-list li {
+  margin: 6px 0;
+}
+
+.resource-list a {
+  color: #4f46e5;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.resource-list a:hover {
+  text-decoration: underline;
+}
+/* Анимация загрузки */
+.video-loading {
+  background: #1f2937;
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 12px;
+  color: white;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #374151;
+  border-top: 4px solid #4f46e5;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.video-error-funny {
+  background: linear-gradient(135deg, #1e1b4b, #2e1065);
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 12px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.video-error-funny-icon {
+  font-size: 64px;
+  animation: shake 0.5s ease infinite alternate;
+}
+
+@keyframes shake {
+  from { transform: translateX(0); }
+  to { transform: translateX(5px); }
+}
+
+.video-error-funny-text {
+  color: white;
+}
+
+.funny-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.funny-subtitle {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 12px;
+}
+
+.funny-loader {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #6366f1;
+  border-top: 3px solid #a78bfa;
+  border-radius: 50%;
+  margin: 10px auto;
+  animation: spin 0.8s linear infinite;
+}
+
+.funny-hint {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.video-container {
+  margin-top: 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #1f2937;
+}
+
+.video-frame {
+  width: 100%;
+  height: 220px;
+  border: none;
+}
+
+.video-note {
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #6b7280;
+  text-align: center;
+  background: #f9fafb;
+  border-top: 1px solid #e5e7eb;
+}
+
+.learning-modal {
+  max-width: 700px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.learning-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.learning-close-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.learning-progress {
+  margin-bottom: 24px;
+}
+
+.learning-progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.progress-bar {
+  background: #e5e7eb;
+  border-radius: 10px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: #4f46e5;
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.learning-module {
+  margin-bottom: 24px;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.module-default {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.module-completed {
+  background: #ecfdf5;
+  border: 1px solid #10b981;
+}
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.module-header h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.module-btn {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-mark {
+  background: #4f46e5;
+  color: white;
+}
+
+.btn-completed {
+  background: #10b981;
+  color: white;
+}
+
+.module-content {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.certificate-box {
+  text-align: center;
+  padding: 16px;
+  background: #fef3c7;
+  border-radius: 16px;
+  margin-top: 16px;
+}
+
+.certificate-box div {
+  font-size: 32px;
+}
+
+.certificate-box h3 {
+  font-weight: bold;
+  color: #92400e;
+  margin: 8px 0;
+}
+
+.certificate-box p {
+  font-size: 14px;
+  color: #92400e;
+}
+
+.learning-close-bottom {
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Табы для входа/регистрации */
+.login-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  background: #f3f4f6;
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.login-tab {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.login-tab-active {
+  background: white;
+  color: #4f46e5;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.login-tab:hover:not(.login-tab-active) {
+  background: #e5e7eb;
+}
+
+.login-error {
+  color: #ef4444;
+  font-size: 13px;
+  margin-bottom: 12px;
+  text-align: center;
+  background: #fef2f2;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.password-eye {
+  position: absolute;
+  right: 12px;
+  top: 40%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #6b7280;
+}
+/* Постоянная смешная заглушка вместо видео */
+.video-funny-permanent {
+  background: linear-gradient(135deg, #1e1b4b, #2e1065);
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 12px;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.video-funny-permanent-icon {
+  font-size: 64px;
+  animation: shake 0.5s ease infinite alternate;
+}
+
+@keyframes shake {
+  from { transform: translateX(0); }
+  to { transform: translateX(5px); }
+}
+
+.video-funny-permanent-text {
+  color: white;
+}
+
+.funny-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.funny-subtitle {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 12px;
+}
+
+.funny-loader {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #6366f1;
+  border-top: 3px solid #a78bfa;
+  border-radius: 50%;
+  margin: 10px auto;
+  animation: spin 0.8s linear infinite;
+}
+
+.funny-hint {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-top: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.video-note {
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #6b7280;
+  text-align: center;
+  background: #f9fafb;
+  border-radius: 0 0 12px 12px;
+  margin-top: 0;
+}
+/* Анимация для сертификата */
+.certificate-animation {
+  animation: bounceIn 4s ease-out;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.certificate-icon {
+  font-size: 48px;
+  animation: shake 2s ease infinite alternate;
+}
+
+
+/* ========== ГЛОБАЛЬНЫЕ АНИМАЦИИ ДЛЯ ПЛАВНОСТИ ========== */
+
+/* Плавное появление всех элементов */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Карточки проектов */
+.project-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Кнопки */
+button {
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.02);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Модальные окна */
+.modal-overlay {
+  animation: fadeIn 0.2s ease;
+}
+
+.modal-content {
+  animation: slideUp 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Карточки задач */
+.task-card {
+  transition: all 0.15s ease;
+}
+
+.task-card:hover {
+  transform: translateX(3px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Drag-and-drop анимация */
+.task-card.dragging {
+  opacity: 0.4;
+  transform: scale(0.95);
+  cursor: grabbing;
+}
+
+/* Kanban колонки при drop */
+.kanban-column {
+  transition: box-shadow 0.2s ease;
+}
+
+.kanban-column:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* WIP предупреждение */
+.wip-warning {
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+  50% { box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2); }
+}
+
+/* Прогресс-бар */
+.progress-fill {
+  transition: width 0.4s ease;
+}
+
+/* Спринт таймер */
+.sprint-active {
+  transition: all 0.2s ease;
+}
+
+.sprint-active:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Значки достижений */
+.profile-achievement-item {
+  transition: all 0.2s ease;
+}
+
+.profile-achievement-item:hover {
+  transform: translateX(5px);
+}
+
+/* Кнопка закрытия модалки */
+.learning-close-btn {
+  transition: all 0.15s ease;
+}
+
+.learning-close-btn:hover {
+  transform: scale(1.05);
+  background: #dc2626;
+}
+
+/* Конфетти плавность */
+canvas {
+  pointer-events: none !important;
+}
+/* Страница квизов */
+.quiz-page {
+  min-height: 100vh;
+  background: #f3f4f6;
+  padding: 24px;
+}
+
+.quiz-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.quiz-header-main {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.quiz-header-main h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.quizzes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.quiz-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.quiz-card:hover {
+  transform: translateY(-3px);
+}
+
+.quiz-card-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.quiz-card h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.quiz-card p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.quiz-completed {
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  border: 1px solid #10b981;
+}
+
+.quiz-desc {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 8px;
+}
+
+.quiz-question-block {
+  margin-bottom: 5px;
+  padding: 10px;
+  background: #f9fafb;
+  border-radius: 16px;
+}
+
+.quiz-question-text {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.quiz-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 12px;
+}
+
+.quiz-option-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.quiz-submit-btn {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.all-quizzes-completed {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border-radius: 16px;
+  padding: 16px;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #92400e;
+  animation: bounceIn 0.5s ease;
+}
+
+/* ========== АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ ========== */
+
+/* Планшеты и маленькие ноутбуки */
+@media (max-width: 1024px) {
+  .kanban-board {
+    flex-wrap: wrap;
+  }
+  
+  .kanban-column {
+    min-width: 320px;
+    flex: 1 1 45%;
+  }
+  
+  .project-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+/* Телефоны (до 768px) */
+@media (max-width: 768px) {
+  /* Общие отступы */
+  .app-container, .board-container {
+    padding: 12px;
+  }
+  
+  /* Дашборд */
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .dashboard-title {
+    font-size: 24px;
+  }
+  
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .project-card {
+    padding: 16px;
+  }
+  
+  /* Kanban-доска */
+  .board-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .board-header div {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .board-header button {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .kanban-board {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .kanban-column {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .column-header-content {
+    flex-wrap: wrap;
+  }
+  
+  /* Заголовки */
+  .board-title {
+    font-size: 22px;
+  }
+  
+  /* Модалки */
+  .modal-content {
+    width: 90%;
+    margin: 0 16px;
+    padding: 20px;
+  }
+  
+  .modal-title {
+    font-size: 18px;
+  }
+  
+  /* Карточка входа */
+  .login-card {
+    width: 90%;
+    padding: 24px;
+    margin: 0 16px;
+  }
+  
+  .login-title {
+    font-size: 24px;
+  }
+  
+  /* Спринт-блок */
+  .sprint-active-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .btn-complete-sprint {
+    width: 100%;
+  }
+  
+  /* Обучающая панель */
+  .learning-panel {
+    padding: 12px;
+  }
+  
+  .learning-text {
+    font-size: 12px;
+  }
+  
+  /* Управление WIP */
+  .wip-control {
+    flex-wrap: wrap;
+  }
+}
+
+/* Очень маленькие телефоны (до 480px) */
+@media (max-width: 480px) {
+  .task-card {
+    padding: 10px;
+  }
+  
+  .task-title {
+    font-size: 13px;
+  }
+  
+  .column-title {
+    font-size: 14px;
+  }
+  
+  .modal-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .modal-buttons button {
+    width: 100%;
+  }
+  
+  .sprint-form input,
+  .sprint-form select {
+    font-size: 14px;
+  }
+}

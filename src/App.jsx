@@ -2,13 +2,22 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import LoginScreen from './components/LoginScreen';
 import Dashboard from './components/Dashboard';
-import { loadCurrentUser, saveUser, loadUserProjects } from './utils/localStorage';
+import QuizzesPage from './components/QuizzesPage';
+import Profile from './components/Profile';
+import { loadCurrentUser, login, logout, loadUserProjects, saveUserProjects } from './utils/localStorage';
+import KanbanBoard from './components/KanbanBoard';
 
 function App() {
   const [user, setUser] = useState(null);
   const [projects, setProjects] = useState([]);
+  const [currentScreen, setCurrentScreen] = useState(() => {
+    return localStorage.getItem('currentScreen') || 'dashboard';
+  });
+  const [currentProjectId, setCurrentProjectId] = useState(() => {
+  const saved = localStorage.getItem('currentProjectId');
+  return saved ? parseInt(saved) : null;
+  });
 
-  // Загрузка при старте
   useEffect(() => {
     const savedUser = loadCurrentUser();
     if (savedUser) {
@@ -18,32 +27,91 @@ function App() {
     }
   }, []);
 
+useEffect(() => {
+  if (user && currentScreen !== 'login') {
+    localStorage.setItem('currentScreen', currentScreen);
+    if (currentProjectId) {
+      localStorage.setItem('currentProjectId', currentProjectId);
+    } else {
+      localStorage.removeItem('currentProjectId');
+    }
+  }
+}, [currentScreen, currentProjectId, user]);
+
   const handleLogin = (name) => {
-    const newUser = { id: Date.now(), name };
-    saveUser(newUser);
+    const newUser = { name };
     setUser(newUser);
+    login(newUser);
     const savedProjects = loadUserProjects(name);
     setProjects(savedProjects);
+    setCurrentScreen('dashboard');
+  };
+
+  const handleLogout = () => {
+    logout();
+    setUser(null);
+    setProjects([]);
+    localStorage.removeItem('currentScreen');
   };
 
   const updateProjects = (newProjects) => {
     setProjects(newProjects);
     if (user) {
-      localStorage.setItem(`agilemind_projects_${user.name}`, JSON.stringify(newProjects));
+      saveUserProjects(user.name, newProjects);
     }
   };
 
   if (!user) {
-    return <LoginScreen onLogin={handleLogin} />;
-  }
+  return <LoginScreen onLogin={handleLogin} />;
+}
 
+// Сохраняем открытый проект
+const openProject = projects.find(p => p.id === currentProjectId);
+
+if (currentScreen === 'project' && openProject) {
   return (
-    <Dashboard
-      user={user}
-      projects={projects}
-      onUpdateProjects={updateProjects}
+    <KanbanBoard
+      project={openProject}
+      onBack={() => {
+        setCurrentScreen('dashboard');
+        setCurrentProjectId(null);
+      }}
+      onUpdate={(updated) => {
+        const newProjects = projects.map(p => p.id === updated.id ? updated : p);
+        updateProjects(newProjects);
+      }}
     />
   );
+}
+
+if (currentScreen === 'quizzes') {
+  return <QuizzesPage onBack={() => setCurrentScreen('dashboard')} />;
+}
+
+if (currentScreen === 'profile') {
+  return (
+    <Profile
+      user={user}
+      projects={projects}
+      onClose={() => setCurrentScreen('dashboard')}
+    />
+  );
+}
+
+return (
+  <Dashboard
+    user={user}
+    projects={projects}
+    onUpdateProjects={updateProjects}
+    onOpenQuizzes={() => setCurrentScreen('quizzes')}
+    onOpenProfile={() => setCurrentScreen('profile')}
+    onOpenProject={(project) => {
+      setCurrentProjectId(project.id);
+      setCurrentScreen('project');
+    }}
+    onLogout={handleLogout}
+  />
+);
 }
 
 export default App;

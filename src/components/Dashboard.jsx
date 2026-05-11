@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import ProjectCard from './ProjectCard';
 import CreateProjectModal from './CreateProjectModal';
 import KanbanBoard from './KanbanBoard';
+import LearningMaterials from './LearningMaterials';
 
-export default function Dashboard({ user, projects, onUpdateProjects }) {
+export default function Dashboard({ user, projects, onUpdateProjects, onOpenQuizzes, onOpenProfile, onOpenProject, onLogout }) {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [currentProject, setCurrentProject] = useState(null);
+  const [showLearning, setShowLearning] = useState(false);
 
   const createProject = (name, methodology) => {
     const newProject = {
@@ -33,11 +35,7 @@ export default function Dashboard({ user, projects, onUpdateProjects }) {
     setCurrentProject(updated);
   };
 
-  // ВЫХОД ИЗ АККАУНТА
-  const handleLogout = () => {
-    localStorage.removeItem('agilemind_current_user');
-    window.location.reload();
-  };
+  const passedCount = projects.filter(p => p.quizPassed).length;
 
   if (currentProject) {
     return (
@@ -49,8 +47,6 @@ export default function Dashboard({ user, projects, onUpdateProjects }) {
     );
   }
 
-  const passedCount = projects.filter(p => p.quizPassed).length;
-
   return (
     <div className="app-container">
       <div className="container">
@@ -59,25 +55,12 @@ export default function Dashboard({ user, projects, onUpdateProjects }) {
             <h1 className="dashboard-title">📊 AgileMind</h1>
             <p className="dashboard-subtitle">Управление проектами с обучением</p>
           </div>
-          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-            <div className="badge-counter">
-              🏅 Знатоков: {passedCount} / {projects.length}
-            </div>
-            <button
-              onClick={handleLogout}
-              style={{
-                background: '#ef4444',
-                color: 'white',
-                border: 'none',
-                padding: '8px 16px',
-                borderRadius: '8px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: 'bold'
-              }}
-            >
-              🚪 Выйти
-            </button>
+          <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+            {/* <div className="badge-counter">🏅 Agile-экспертов: {passedCount} / {projects.length}</div> */}
+            <button onClick={onOpenQuizzes} style={{ background: '#f59e0b', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer' }}>🏅 Квизы</button>
+            <button onClick={() => setShowLearning(true)} style={{ background: '#10b981', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer' }}>📚 Обучение</button>
+            <button onClick={onOpenProfile} style={{ background: '#4f46e5', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer' }}>👤 Профиль</button>
+            <button onClick={onLogout} style={{ background: '#ef4444', color: 'white', border: 'none', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer' }}>🚪 Выйти</button>
           </div>
         </div>
 
@@ -85,32 +68,19 @@ export default function Dashboard({ user, projects, onUpdateProjects }) {
           <div className="empty-state">
             <div className="empty-emoji">🚀</div>
             <p className="empty-text">Создайте первый проект</p>
-            <button className="btn-primary" onClick={() => setShowCreateModal(true)}>
-              + Создать проект
-            </button>
+            <button className="btn-primary" onClick={() => setShowCreateModal(true)}>+ Создать проект</button>
           </div>
         ) : (
           <div className="project-grid">
             {projects.map(p => (
-              <ProjectCard
-                key={p.id}
-                project={p}
-                onOpen={setCurrentProject}
-                onDelete={deleteProject}
-              />
+              <ProjectCard key={p.id} project={p} onOpen={(project) => onOpenProject(project)} onDelete={deleteProject} />
             ))}
-            <button className="add-project-btn" onClick={() => setShowCreateModal(true)}>
-              +
-            </button>
+            <button className="add-project-btn" onClick={() => setShowCreateModal(true)}>+</button>
           </div>
         )}
 
-        {showCreateModal && (
-          <CreateProjectModal
-            onClose={() => setShowCreateModal(false)}
-            onCreate={createProject}
-          />
-        )}
+        {showCreateModal && <CreateProjectModal onClose={() => setShowCreateModal(false)} onCreate={createProject} />}
+        {showLearning && <LearningMaterials onClose={() => setShowLearning(false)} />}
       </div>
     </div>
   );
